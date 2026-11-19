@@ -1,0 +1,9 @@
+# Local lint overrides for the dedup test suite. Inherit every rule from the
+# repository config, then relax test-only rules.
+extend = "../pyproject.toml"
+
+[lint.per-file-ignores]
+# S101: asserts are the point of tests.
+# S603: subprocess.run uses an explicit interpreter, shell=False, and only
+# invokes this package's own CLI entry point.
+"*.py" = ["S101", "S603"]

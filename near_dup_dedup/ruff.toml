@@ -1,0 +1,8 @@
+# Local lint overrides for the resumable dedup package. Inherit every rule
+# from the repository config, then relax only what this package needs.
+extend = "../pyproject.toml"
+
+# T201 bans `print`, but emitting JSON to stdout/stderr is the purpose of a
+# command-line tool.
+[lint.per-file-ignores]
+"cli.py" = ["T201"]
